@@ -25,9 +25,12 @@ wss.on('connection', (ws) => {
         if(data.message === "fetch"){
             ws.send(JSON.stringify(state[0]));
         } else if(data.message === "update"){
-            state[0] = data;
+            state[0] = {
+                name: data.name,
+                state: data.state
+            };
             wss.clients.forEach((client) => {
-                    client.send(JSON.stringify(data));
+                client.send(JSON.stringify(state[0]));
             });
         } else{
             ws.send(JSON.stringify(
