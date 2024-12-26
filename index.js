@@ -6,7 +6,7 @@ import { state } from './model/state.js';
 const app= express();
 
 app.get('/', (req, res) => {
-    res.json({message: 'Hello'});
+    res.json({message: 'Hi i am server'});
     });
 
 const server = http.createServer(app);
